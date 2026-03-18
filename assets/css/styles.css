@@ -652,7 +652,7 @@ strong {
 /* Highlights */
 .highlights {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
 
@@ -692,20 +692,21 @@ strong {
 /* Cards */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 14px;
+  align-items: start;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   padding: 18px;
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
   transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .card:hover {
@@ -714,18 +715,24 @@ strong {
   border-color: rgba(255, 255, 255, 0.14);
 }
 
-.card__actions,
-.card__cta,
-.card .btn {
+.card > a.btn {
   margin-top: auto;
+  align-self: flex-end;
+  display: inline-flex;
 }
 
-.card .btn--accent,
-.card .btn--primary,
-.card .btn--ghost,
-.card .btn--outline {
-  align-self: flex-end;
+.card__cta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
 }
+
+.card__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
 .card__title {
   margin: 0 0 8px;
   font-size: 16px;
@@ -950,7 +957,7 @@ strong {
 /* Pricing */
 .pricingGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
 
