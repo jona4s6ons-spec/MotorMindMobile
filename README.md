@@ -1,2 +1,0 @@
-# MotorMindMobile
-A better frontend
