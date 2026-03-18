@@ -25,7 +25,7 @@
   --max: 1160px;
   --gutter: 18px;
 
-  --header-h: 76px;
+  --header-h: 88px;
 }
 
 *,
@@ -272,8 +272,8 @@ strong {
 .nav__link {
   color: var(--muted);
   font-weight: 600;
-  font-size: 14px;
-  padding: 10px 10px;
+  font-size: 16px;
+  padding: 10px 12px;
   border-radius: 12px;
   transition: background 150ms ease, color 150ms ease;
 }
