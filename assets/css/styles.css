@@ -292,11 +292,6 @@ strong {
   color: var(--text);
 }
 
-.nav__link.is-active {
-  color: var(--text);
-  background: rgba(204, 201, 220, 0.15);
-  border: 1px solid rgba(204, 201, 220, 0.32);
-}
 
 .nav__cta {
   margin-left: 6px;
