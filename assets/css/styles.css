@@ -1,26 +1,26 @@
 /* File: Motor Mind Auto/assets/css/styles.css */
 
 :root {
-  --bg: #0b0f14;
-  --surface: #0f1622;
-  --surface-2: #101b2b;
-  --card: rgba(255, 255, 255, 0.06);
-  --card-2: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.14);
+  --bg: #000000;
+  --surface: #0C1821;
+  --surface-2: #1B2A41;
+  --card: rgba(50, 74, 95, 0.18);
+  --card-2: rgba(204, 201, 220, 0.12);
+  --border: rgba(204, 201, 220, 0.22);
 
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.72);
-  --faint: rgba(255, 255, 255, 0.56);
+  --text: #CCC9DC;
+  --muted: rgba(204, 201, 220, 0.82);
+  --faint: rgba(204, 201, 220, 0.6);
 
-  --accent: #ffb703;
-  --accent-2: #ff5a3c;
+  --accent: #324A5F;
+  --accent-2: #1B2A41;
 
   --shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
   --shadow-2: 0 10px 30px rgba(0, 0, 0, 0.35);
 
-  --radius: 18px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
 
   --max: 1160px;
   --gutter: 18px;
@@ -32,6 +32,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  border-radius: 0 !important;
 }
 
 html {
@@ -41,8 +42,8 @@ html {
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 800px at 15% 10%, rgba(255, 183, 3, 0.14), transparent 55%),
-    radial-gradient(900px 700px at 90% 10%, rgba(255, 90, 60, 0.10), transparent 55%),
+  background: radial-gradient(1400px 900px at 10% 10%, rgba(204, 201, 220, 0.08), transparent 55%),
+    radial-gradient(1000px 800px at 90% 20%, rgba(50, 74, 95, 0.1), transparent 55%),
     var(--bg);
   color: var(--text);
   line-height: 1.55;
@@ -160,6 +161,7 @@ strong {
 }
 
 .header__inner {
+  min-height: var(--header-h);
   height: var(--header-h);
   display: flex;
   align-items: center;
@@ -170,17 +172,26 @@ strong {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  max-height: 100%;
+}
+
+.brand img,
+.brand__mark {
+  max-height: calc(var(--header-h) - 18px);
+  width: auto;
+  display: block;
+}
+
+.brand img {
+  max-width: 170px;
+  object-fit: contain;
 }
 
 .brand__mark {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255, 183, 3, 1), rgba(255, 90, 60, 1));
-  color: #101010;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #324A5F, #1B2A41);
+  color: #CCC9DC;
   font-weight: 900;
   letter-spacing: 0.5px;
   box-shadow: var(--shadow-2);
@@ -189,6 +200,7 @@ strong {
 .brand__text {
   display: grid;
   gap: 1px;
+  line-height: 1;
 }
 
 .brand__name {
@@ -274,8 +286,8 @@ strong {
 
 .nav__link.is-active {
   color: var(--text);
-  background: rgba(255, 183, 3, 0.12);
-  border: 1px solid rgba(255, 183, 3, 0.22);
+  background: rgba(204, 201, 220, 0.15);
+  border: 1px solid rgba(204, 201, 220, 0.32);
 }
 
 .nav__cta {
@@ -326,10 +338,10 @@ strong {
 }
 
 .btn--accent {
-  background: linear-gradient(135deg, rgba(255, 183, 3, 1), rgba(255, 90, 60, 1));
-  color: #101010;
+  background: linear-gradient(135deg, #324A5F, #1B2A41);
+  color: #CCC9DC;
   border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 18px 45px rgba(255, 120, 20, 0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
 }
 
 .btn--accent:hover {
@@ -402,8 +414,8 @@ strong {
 }
 
 .pill--soft {
-  background: rgba(255, 183, 3, 0.08);
-  border-color: rgba(255, 183, 3, 0.18);
+  background: rgba(204, 201, 220, 0.10);
+  border-color: rgba(204, 201, 220, 0.25);
   color: var(--text);
 }
 
@@ -439,7 +451,7 @@ strong {
 }
 
 .section--alt {
-  background: radial-gradient(900px 600px at 20% 0%, rgba(255, 183, 3, 0.10), transparent 55%),
+  background: radial-gradient(900px 600px at 20% 0%, rgba(50, 74, 95, 0.1), transparent 55%),
     rgba(255, 255, 255, 0.02);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -510,11 +522,17 @@ strong {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 22px;
-  align-items: center;
+  align-items: start;
 }
 
 .hero__content {
   padding: 8px 0;
+}
+
+.heroCard {
+  margin: 0;
+  width: 100%;
+  border-radius: 0 !important;
 }
 
 .hero__kicker {
@@ -529,10 +547,11 @@ strong {
   font-size: clamp(34px, 4.2vw, 56px);
   letter-spacing: -0.04em;
   line-height: 1.02;
+  max-width: 740px;
 }
 
 .hero__titleAccent {
-  background: linear-gradient(135deg, rgba(255, 183, 3, 1), rgba(255, 90, 60, 1));
+  background: linear-gradient(135deg, #CCC9DC, #324A5F);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -544,6 +563,7 @@ strong {
   font-size: 16px;
   max-width: 70ch;
 }
+
 
 .hero__actions {
   display: flex;
@@ -652,8 +672,8 @@ strong {
   display: grid;
   place-items: center;
   border-radius: 16px;
-  background: rgba(255, 183, 3, 0.10);
-  border: 1px solid rgba(255, 183, 3, 0.18);
+  background: rgba(50, 74, 95, 0.2);
+  border: 1px solid rgba(204, 201, 220, 0.32);
   font-size: 18px;
 }
 
@@ -683,6 +703,9 @@ strong {
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
   transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card:hover {
@@ -691,6 +714,18 @@ strong {
   border-color: rgba(255, 255, 255, 0.14);
 }
 
+.card__actions,
+.card__cta,
+.card .btn {
+  margin-top: auto;
+}
+
+.card .btn--accent,
+.card .btn--primary,
+.card .btn--ghost,
+.card .btn--outline {
+  align-self: flex-end;
+}
 .card__title {
   margin: 0 0 8px;
   font-size: 16px;
@@ -736,12 +771,12 @@ strong {
 .step__num {
   width: 38px;
   height: 38px;
-  border-radius: 14px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
   font-weight: 900;
   color: #101010;
-  background: linear-gradient(135deg, rgba(255, 183, 3, 1), rgba(255, 90, 60, 1));
+  background: linear-gradient(135deg, #324A5F, #1B2A41);
   margin-bottom: 10px;
 }
 
@@ -761,8 +796,8 @@ strong {
   margin-top: 18px;
   padding: 18px;
   border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, rgba(255, 183, 3, 0.10), rgba(255, 90, 60, 0.08));
-  border: 1px solid rgba(255, 183, 3, 0.18);
+  background: linear-gradient(135deg, rgba(50, 74, 95, 0.14), rgba(27, 42, 65, 0.1));
+  border: 1px solid rgba(204, 201, 220, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -821,7 +856,7 @@ strong {
 }
 
 .quote__stars {
-  color: rgba(255, 183, 3, 0.92);
+  color: rgba(204, 201, 220, 0.92);
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
@@ -886,11 +921,11 @@ strong {
 .point__icon {
   width: 42px;
   height: 42px;
-  border-radius: 16px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
-  background: rgba(255, 90, 60, 0.10);
-  border: 1px solid rgba(255, 90, 60, 0.18);
+  background: rgba(50, 74, 95, 0.14);
+  border: 1px solid rgba(204, 201, 220, 0.28);
 }
 
 .point__title {
@@ -931,8 +966,8 @@ strong {
 }
 
 .pricingCard--featured {
-  background: linear-gradient(135deg, rgba(255, 183, 3, 0.10), rgba(255, 90, 60, 0.10));
-  border-color: rgba(255, 183, 3, 0.20);
+  background: linear-gradient(135deg, rgba(50, 74, 95, 0.14), rgba(27, 42, 65, 0.1));
+  border-color: rgba(204, 201, 220, 0.2);
 }
 
 .ribbon {
@@ -941,8 +976,8 @@ strong {
   right: 14px;
   padding: 7px 10px;
   border-radius: 999px;
-  background: rgba(255, 183, 3, 0.18);
-  border: 1px solid rgba(255, 183, 3, 0.26);
+  background: rgba(204, 201, 220, 0.15);
+  border: 1px solid rgba(204, 201, 220, 0.28);
   font-weight: 900;
   font-size: 12px;
 }
@@ -970,8 +1005,8 @@ strong {
 /* CTA section */
 .section--cta {
   padding: 64px 0;
-  background: radial-gradient(900px 700px at 20% 40%, rgba(255, 183, 3, 0.18), transparent 60%),
-    radial-gradient(900px 700px at 80% 60%, rgba(255, 90, 60, 0.16), transparent 60%),
+  background: radial-gradient(900px 700px at 20% 40%, rgba(50, 74, 95, 0.18), transparent 60%),
+    radial-gradient(900px 700px at 80% 60%, rgba(27, 42, 65, 0.16), transparent 60%),
     rgba(255, 255, 255, 0.02);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -1112,7 +1147,7 @@ strong {
   }
 
   .heroCard {
-    max-width: 640px;
+    max-width: 100%;
   }
 
   .cards {
