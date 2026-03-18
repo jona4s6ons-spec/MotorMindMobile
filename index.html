@@ -1,0 +1,503 @@
+<!-- File: Motor Mind Auto/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Motor Mind Auto brings premium mobile automotive maintenance & repair to your driveway. Certified expertise, transparent service, convenient scheduling."
+    />
+    <title>Motor Mind Auto | Mobile Automotive Service</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Header / Nav -->
+    <header class="header" data-header>
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="Motor Mind Auto Home">
+          <a href="index.html">
+            <img src="/assets/icons/MotorMindLogoWEB.png" alt="Logo">
+          </a>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <button class="nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="navMenu">
+            <span class="nav__toggleBars" aria-hidden="true"></span>
+            <span class="sr-only">Open menu</span>
+          </button>
+
+          <div class="nav__menu" id="navMenu" data-menu>
+            <a class="nav__link" href="#services" data-nav-link>Services</a>
+            <a class="nav__link" href="#how" data-nav-link>How it works</a>
+            <a class="nav__link" href="#reviews" data-nav-link>Reviews</a>
+            <a class="nav__link" href="#about" data-nav-link>About</a>
+            <a class="nav__link" href="#pricing" data-nav-link>Pricing</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero" id="top" aria-label="Hero">
+        <div class="hero__bg" role="img" aria-label="Mechanic working on a vehicle"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <h1 class="hero__title">
+              Premium auto service —
+              <span class="hero__titleAccent">right in your driveway</span>
+            </h1>
+
+            <p class="hero__sub">
+              Motor Mind Auto brings the quality of a stand-alone shop with the convenience of
+              at-home maintenance and repair. Clear communication. Solid workmanship. No hassle.
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--accent btn--lg" href="#pricing">Get an estimate</a>
+              <a class="btn btn--ghost btn--lg" href="#services">View services</a>
+            </div>
+
+
+          <!-- Quick actions card -->
+          <aside class="heroCard" aria-label="Quick actions">
+            <h2 class="heroCard__title">Need help fast?</h2>
+            <p class="heroCard__text">
+              Call or text and we’ll get you a plan. Diagnostics, maintenance, and repairs — done where your car is.
+            </p>
+
+            <div class="heroCard__actions">
+              <a class="btn btn--primary" href="tel:+12085551234">Call now</a>
+              <a class="btn btn--outline" href="sms:+12085551234">Text us</a>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero__fade" aria-hidden="true"></div>
+      </section>
+
+      <!-- Services -->
+      <section class="section" id="services" aria-label="Services">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionTitle">Services that keep you confident</h2>
+            <p class="sectionSub">
+              From routine maintenance to troubleshooting, Motor Mind Auto delivers shop-level care — on your schedule.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <h3 class="card__title">Service Call</h3>
+              <p class="card__text">On-site vehicle diagnosis so we can scope repairs and provide a clear quote.</p>
+              <ul class="card__bullets">
+                <li>$85 service call fee</li>
+                <li>On-site system scan and inspection</li>
+                <li>Fee may be reduced in the final quote if you book service</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/service-call.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Service Subscription</h3>
+              <p class="card__text">Monthly subscription includes regular synthetic oil changes, diagnostics, and consults.</p>
+              <ul class="card__bullets">
+                <li>Premium oils and filters</li>
+                <li>Free tire rotations and diagnostics</li>
+                <li>Priority scheduling and maintenance planning</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/service-subscription.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Oil Change & Inspection</h3>
+              <p class="card__text">Synthetic oil, premium filter, plus an inspection to catch worn components early.</p>
+              <ul class="card__bullets">
+                <li>Convenient mobile service</li>
+                <li>Comprehensive wear and fluid checks</li>
+                <li>Service notes and next-step recommendations</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/oil-change-inspection.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Fluids Service</h3>
+              <p class="card__text">Fluid checks and servicing for coolant, transmission, brakes, differential, and transfer case.</p>
+              <ul class="card__bullets">
+                <li>Fluids topped or replaced as needed</li>
+                <li>System condition assessment</li>
+                <li>Preventive maintenance to avoid costly repairs</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/fluids-service.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Light Engine Repair</h3>
+              <p class="card__text">Water pumps, belts, plugs, gaskets, filters, and intake cleaning for everyday reliability.</p>
+              <ul class="card__bullets">
+                <li>Timing belt, serpentine belt, and gasket repairs</li>
+                <li>Spark plug replacement and air filter service</li>
+                <li>Diagnostics plus a repair plan you understand</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/light-engine-repair.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Brakes</h3>
+              <p class="card__text">Complete braking service including pads, rotors, lines, fluid, and caliper checks.</p>
+              <ul class="card__bullets">
+                <li>Brake pad and rotor replacement</li>
+                <li>Brake fluid inspection and service</li>
+                <li>System safety checks and recommendations</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/brakes.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Drivetrain & Suspension</h3>
+              <p class="card__text">Steering, suspension, and drivetrain maintenance to keep your vehicle driving as it should.</p>
+              <ul class="card__bullets">
+                <li>Steering and suspension checks</li>
+                <li>Drive axle and differential inspections</li>
+                <li>Recommended repairs with transparent quotes</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/drivetrain-suspension.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Pre-Sale / Post-Sale Inspection</h3>
+              <p class="card__text">Sell or buy with confidence using a clear, vehicle condition inspection report.</p>
+              <ul class="card__bullets">
+                <li>Buyer and seller vehicle checks</li>
+                <li>Leak, wear, and system assessments</li>
+                <li>Repair recommendations before purchase decisions</li>
+              </ul>
+              <a class="btn btn--accent" href="./pages/pre-sale-post-sale-inspection.html">Schedule now</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">1-on-1 Hands-on Learning</h3>
+              <p class="card__text">Do you love cars? Do you wish you could work on your own vehicle but lack the tools or expertise? With Motor Mind’s hands-on learning, you can perform light repairs with personal satisfaction and professional supervision.</p>
+              <ul class="card__bullets">
+                <li>Learn while your vehicle is serviced</li>
+                <li>Use our tools with expert guidance</li>
+                <li>Build confidence knowing it was done right</li>
+              </ul>
+              <a class="btn btn--accent" href="tel:+12085551234">Call/Text</a>
+            </article>
+
+            <article class="card">
+              <h3 class="card__title">Consulting & Education</h3>
+              <p class="card__text">Do you ever wish your car ownership experience could be better? Our 1-on-1 consulting and education provide guidance for ownership, buying, and everyday use so you get peace of mind.</p>
+              <ul class="card__bullets">
+                <li>Personalized car ownership advice</li>
+                <li>Buying and maintenance guidance tailored to your vehicle</li>
+                <li>Practical education for safer, smarter ownership</li>
+              </ul>
+              <a class="btn btn--accent" href="tel:+12085551234">Call/Text</a>
+            </article>
+          </div>
+
+          <div class="sectionCta">
+            <a class="btn btn--primary" href="#pricing">See pricing approach</a>
+            <a class="btn btn--ghost" href="#contact">Talk to a tech</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="section section--alt" id="how" aria-label="How it works">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionTitle">In & out — without the shop hassle</h2>
+            <p class="sectionSub">Simple steps, clear communication, and work you can feel good about.</p>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step__num">1</div>
+              <h3 class="step__title">Reach out</h3>
+              <p class="step__text">Call/text with your vehicle info and what’s going on.</p>
+            </div>
+
+            <div class="step">
+              <div class="step__num">2</div>
+              <h3 class="step__title">Get a plan</h3>
+              <p class="step__text">We confirm scope, pricing expectations, and a time that works.</p>
+            </div>
+
+            <div class="step">
+              <div class="step__num">3</div>
+              <h3 class="step__title">Service at your location</h3>
+              <p class="step__text">We show up prepared, do the job right, and keep you informed.</p>
+            </div>
+
+            <div class="step">
+              <div class="step__num">4</div>
+              <h3 class="step__title">Drive confident</h3>
+              <p class="step__text">You get notes on what was done and what to watch next.</p>
+            </div>
+          </div>
+
+          <div class="banner">
+            <div class="banner__content">
+              <h3 class="banner__title">Mobile service means less downtime</h3>
+              <p class="banner__text">
+                No rides, no waiting rooms — just a better way to keep your vehicle running strong.
+              </p>
+            </div>
+            <a class="btn btn--accent" href="#contact">Call / Text now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section class="section" id="reviews" aria-label="Reviews and testimonials">
+        <div class="container">
+          <div class="sectionHead sectionHead--split">
+            <div>
+              <h2 class="sectionTitle">People love the convenience</h2>
+              <p class="sectionSub">Replace these with real customer reviews as you collect them.</p>
+            </div>
+
+            <div class="carouselControls" aria-label="Testimonials controls">
+              <button class="iconBtn" type="button" data-prev aria-label="Previous testimonial">‹</button>
+              <button class="iconBtn" type="button" data-next aria-label="Next testimonial">›</button>
+            </div>
+          </div>
+
+          <div class="carousel" data-carousel>
+            <div class="carousel__track" data-track>
+              <article class="quote">
+                <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <p class="quote__text">
+                  “Jonathan explained everything clearly and fixed the issue the same day. Huge time saver.”
+                </p>
+                <p class="quote__meta"><strong>— Customer Name</strong> • Oil service + inspection</p>
+              </article>
+
+              <article class="quote">
+                <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <p class="quote__text">
+                  “No pressure, just honest options. The mobile service is a game-changer for busy schedules.”
+                </p>
+                <p class="quote__meta"><strong>— Customer Name</strong> • Diagnostics</p>
+              </article>
+
+              <article class="quote">
+                <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <p class="quote__text">
+                  “Professional, punctual, and the work was top-notch. I’ll be using Motor Mind from now on.”
+                </p>
+                <p class="quote__meta"><strong>— Customer Name</strong> • Brakes</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="badgeRow" aria-label="Trust badges">
+            <span class="pill pill--soft">ASE-level experience</span>
+            <span class="pill pill--soft">Education-focused</span>
+            <span class="pill pill--soft">Transparent approvals</span>
+            <span class="pill pill--soft">Mobile convenience</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section section--alt" id="about" aria-label="About Jonathan">
+        <div class="container about">
+          <div class="about__media">
+            <img
+              class="about__img"
+              src="./assets/images/motor%20mind%20mobile%20jonathan.jpeg"
+              alt="Jonathan from Motor Mind Auto standing outdoors"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="about__content">
+            <h2 class="sectionTitle">Meet Jonathan</h2>
+            <p class="sectionSub">
+              Motor Mind Auto is built around a simple idea: great automotive service should be convenient, honest, and
+              easy to understand.
+            </p>
+
+            <div class="about__points">
+              <div class="point">
+                <div class="point__icon" aria-hidden="true">🎓</div>
+                <div>
+                  <h3 class="point__title">Training you can trust</h3>
+                  <p class="point__text">Experience that brings shop-level standards to your driveway.</p>
+                </div>
+              </div>
+
+              <div class="point">
+                <div class="point__icon" aria-hidden="true">🧭</div>
+                <div>
+                  <h3 class="point__title">Clear guidance</h3>
+                  <p class="point__text">You’ll understand what matters now vs. later — and why.</p>
+                </div>
+              </div>
+
+              <div class="point">
+                <div class="point__icon" aria-hidden="true">🤝</div>
+                <div>
+                  <h3 class="point__title">Respect for your time</h3>
+                  <p class="point__text">We show up prepared, communicate clearly, and keep things moving.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about__actions">
+              <a class="btn btn--primary" href="#contact">Contact Jonathan</a>
+              <a class="btn btn--ghost" href="#services">Browse services</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing approach -->
+      <section class="section" id="pricing" aria-label="Pricing">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionTitle">Simple, transparent pricing approach</h2>
+            <p class="sectionSub">
+              Since every vehicle and situation is a little different, we quote based on your vehicle info and the work needed —
+              with approvals before anything is done.
+            </p>
+          </div>
+
+          <div class="pricingGrid">
+            <article class="pricingCard">
+              <h3 class="pricingCard__title">Maintenance</h3>
+              <p class="pricingCard__text">Oil, filters, fluids, batteries, and other routine service.</p>
+              <ul class="pricingCard__list">
+                <li>Clear parts + labor breakdown</li>
+                <li>Mobile convenience included</li>
+                <li>Service notes after completion</li>
+              </ul>
+              <a class="btn btn--outline" href="#contact">Get a maintenance estimate</a>
+            </article>
+
+            <article class="pricingCard pricingCard--featured">
+              <div class="ribbon" aria-hidden="true">Most requested</div>
+              <h3 class="pricingCard__title">Diagnostics</h3>
+              <p class="pricingCard__text">Check engine light, drivability issues, electrical problems.</p>
+              <ul class="pricingCard__list">
+                <li>Test-first process</li>
+                <li>Root cause + repair options</li>
+                <li>Prioritized recommendations</li>
+              </ul>
+              <a class="btn btn--accent" href="#contact">Start diagnostics</a>
+            </article>
+
+            <article class="pricingCard">
+              <h3 class="pricingCard__title">Repairs</h3>
+              <p class="pricingCard__text">Brakes, cooling, starting/charging, and more (as applicable).</p>
+              <ul class="pricingCard__list">
+                <li>Quality parts selection</li>
+                <li>Approval checkpoints</li>
+                <li>Practical, honest guidance</li>
+              </ul>
+              <a class="btn btn--outline" href="#contact">Discuss a repair</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA (no form) -->
+      <section class="section section--cta" id="contact" aria-label="Contact">
+        <div class="container cta">
+          <div class="cta__content">
+            <h2 class="cta__title">Ready to make car care easy?</h2>
+            <p class="cta__text">
+              Call or text with your year/make/model and what you’re experiencing. We’ll respond with next steps and scheduling.
+            </p>
+            <div class="cta__actions">
+              <a class="btn btn--dark btn--lg" href="tel:+12085551234">Call (208) 555-1234</a>
+              <a class="btn btn--light btn--lg" href="sms:+12085551234">Text us</a>
+            </div>
+          </div>
+
+          <div class="cta__panel" aria-label="Quick info">
+            <div class="ctaRow">
+              <span class="ctaLabel">Service model</span>
+              <span class="ctaValue">Mobile • We come to you</span>
+            </div>
+            <div class="ctaRow">
+              <span class="ctaLabel">Hours</span>
+              <span class="ctaValue">Mon–Sat • 8am–6pm</span>
+            </div>
+            <div class="ctaRow">
+              <span class="ctaLabel">What to send</span>
+              <span class="ctaValue">Year / Make / Model + symptoms</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" aria-label="Footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="brand brand--footer" aria-label="Motor Mind Auto">
+            <span class="brand__mark" aria-hidden="true">MM</span>
+            <span class="brand__text">
+              <span class="brand__name">Motor Mind Auto</span>
+              <span class="brand__tag">Mobile Maintenance & Repair</span>
+            </span>
+          </div>
+          <p class="footer__text">
+            Premium automotive service brought to you. Honest answers, quality work, and convenient scheduling.
+          </p>
+        </div>
+
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h3 class="footer__title">Explore</h3>
+            <a class="footer__link" href="#services">Services</a>
+            <a class="footer__link" href="#how">How it works</a>
+            <a class="footer__link" href="#reviews">Reviews</a>
+            <a class="footer__link" href="#about">About</a>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Contact</h3>
+            <a class="footer__link" href="tel:+12085551234">(208) 555-1234</a>
+            <a class="footer__link" href="sms:+12085551234">Text us</a>
+            <span class="footer__muted">Mon–Sat • 8am–6pm</span>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Notes</h3>
+            <span class="footer__muted">Replace placeholder service area & phone number.</span>
+            <span class="footer__muted">Add real reviews when available.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container footer__bottomInner">
+          <span>© <span data-year></span> Motor Mind Auto. All rights reserved.</span>
+          <a class="footer__link" href="#top">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./assets/js/main.js" defer></script>
+  </body>
+</html>
