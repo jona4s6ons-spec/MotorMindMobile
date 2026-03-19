@@ -9,8 +9,8 @@
   --border: rgba(204, 201, 220, 0.22);
 
   --text: #CCC9DC;
-  --muted: rgba(204, 201, 220, 0.82);
-  --faint: rgba(204, 201, 220, 0.6);
+  --muted: rgb(255, 255, 255);
+  --faint: rgb(255, 255, 255);
 
   --accent: #324A5F;
   --accent-2: #1B2A41;
@@ -107,7 +107,7 @@ strong {
 
 /* Topbar */
 .topbar {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgb(0, 0, 0);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
 }
@@ -163,7 +163,7 @@ strong {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgb(11, 15, 20);
+  background: rgb(0, 0, 0);
 }
 
 .header__inner {
