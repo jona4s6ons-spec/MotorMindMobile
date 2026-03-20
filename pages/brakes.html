@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Book your brakes appointment with Jonathan from Motor Mind Auto."
+    />
+    <title>Brakes Service | Motor Mind Auto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Rubik:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <style>
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .booking-grid .card {
+        margin: 0;
+      }
+      .formGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .formGrid input,
+      .formGrid textarea,
+      .formGrid select {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(0,0,0,.46);
+        color: #fff;
+        padding: 10px;
+        font: inherit;
+      }
+      .formGrid label { font-weight: 700; font-size: 13px; margin-bottom: 4px; display: block; }
+      .fullWidth { grid-column: 1 / -1; }
+      .calendar { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); border-radius: 12px; padding: 12px; }
+      .calendarHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+      .weekGrid { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap: 6px; margin-bottom: 8px; }
+      .day { border-radius: 8px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); min-height: 74px; padding: 6px; font-size: 12px; display: grid; gap: 4px; }
+      .day { display: flex; flex-direction: column; gap: 6px; }
+      .day button { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; border: none; border-radius: 6px; background: rgba(50,74,95,.7); color: #fff; font-weight: 700; cursor: pointer; padding: 6px 8px; font-size: 11px; white-space: normal; text-align: center; line-height: 1.2; }
+      .day button:hover { background: rgba(50,74,95,.9); }
+      .day button.is-selected { background: #2ee59d; color: #06241e; }
+      .day.day-unavailable { opacity: .4; pointer-events: none; }
+      .dayTitle { font-size: 10px; text-transform: uppercase; color: #ddd; letter-spacing: .03em; }
+      .timesGrid { margin-top: 10px; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 6px; }
+      .timeSlot { border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: #fff; border-radius: 8px; padding: 6px 8px; text-align: center; font-weight: 700; cursor: pointer; font-size: 11px; }
+      .timeSlot.unavailable { opacity: .45; pointer-events: none; background: rgba(255,0,0,.12); border-color: rgba(255,0,0,.24); }
+      .timeSlot.selected { border-color: #2ee59d; background: rgba(46,229,157,.2); color: #e5ffef; }
+      .hidden { display: none; }
+      .modalOverlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 12px; }
+      .modal { background: #0b1221; border: 1px solid rgba(255,255,255,.2); border-radius: 14px; width: min(540px, 96vw); color: #fff; max-height: 92vh; overflow: auto; box-shadow: 0 16px 50px rgba(0,0,0,.55); }
+      .modalHeader, .modalBody, .modalActions { padding: 16px; }
+      .modalHeader { border-bottom: 1px solid rgba(255,255,255,.08); }
+      .modalActions { display: flex; justify-content: flex-end; gap: 8px; border-top: 1px solid rgba(255,255,255,.08); }
+      .modal h3 { margin: 0 0 8px; }
+      .modal p { margin: 6px 0; color: #ddd; }
+      .formError { color: #ffb5b5; font-size: 13px; margin: 0 0 10px; display: none; }
+      .btn:disabled { opacity: .45; cursor: not-allowed; }
+      @media (max-width: 980px) {
+        .booking-grid { grid-template-columns: 1fr; }
+        .timesGrid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header" data-header>
+      <div class="container header__inner">
+        <a class="brand" href="../index.html" aria-label="Motor Mind Auto Home">
+          <img src="../assets/icons/MotorMindLogoWEB.png" alt="Motor Mind Auto logo">
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <button class="nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="navMenu">
+            <span class="nav__toggleBars" aria-hidden="true"></span>
+            <span class="sr-only">Open menu</span>
+          </button>
+
+          <div class="nav__menu" id="navMenu" data-menu>
+            <a class="nav__link" href="../index.html#services" data-nav-link>Services</a>
+            <a class="nav__link" href="../index.html#reviews" data-nav-link>Reviews</a>
+            <a class="nav__link" href="../index.html#about" data-nav-link>About</a>
+            <a class="nav__link" href="../index.html#pricing" data-nav-link>Pricing</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <h1 class="sectionTitle">Brakes Service</h1>
+          <p class="sectionSub">Book your appointment with Jonathan. Pick your preferred date/time and share your vehicle symptoms.</p>
+        </div>
+
+        <div class="booking-grid">
+          <article class="card">
+            <h2 class="card__title">Tell us about your vehicle</h2>
+            <p class="card__text">Required fields are marked with <span class="required">*</span>.</p>
+            <div id="error-message" class="formError"></div>
+            <form id="bookingForm" novalidate>
+              <div class="formGrid">
+                <div>
+                  <label for="firstName">First name<span class="required">*</span></label>
+                  <input id="firstName" name="firstName" type="text" placeholder="First name" required />
+                </div>
+
+                <div>
+                  <label for="lastName">Last name<span class="required">*</span></label>
+                  <input id="lastName" name="lastName" type="text" placeholder="Last name" required />
+                </div>
+
+                <div class="fullWidth">
+                  <label for="contact">Phone or email<span class="required">*</span></label>
+                  <input id="contact" name="contact" type="text" placeholder="Phone or email" />
+                </div>
+
+                <div class="fullWidth">
+                  <label for="vin">Vehicle VIN</label>
+                  <input id="vin" name="vin" type="text" placeholder="1HGBH41JXMN109186" />
+                </div>
+
+                <div class="fullWidth">
+                  <label for="symptoms">Symptoms / Additional questions</label>
+                  <textarea id="symptoms" name="symptoms" rows="4" placeholder="What's going on with your car?" ></textarea>
+                </div>
+
+                <div class="fullWidth">
+                  <label for="selectedDate">Selected date</label>
+                  <input id="selectedDate" name="selectedDate" type="text" readonly placeholder="Select a date on the calendar" />
+                </div>
+                <div class="fullWidth">
+                  <label for="selectedTimeDisplay">Selected time</label>
+                  <input id="selectedTimeDisplay" name="selectedTimeDisplay" type="text" readonly placeholder="Select time from availability" />
+                  <input id="selectedTime" name="selectedTime" type="hidden" />
+                </div>
+              </div>
+
+              <div class="sectionCta">
+                <button id="submitButton" type="submit" class="btn btn--accent btn--lg" disabled>Submit appointment request</button>
+                <a class="btn btn--ghost btn--lg" href="../index.html">Back to homepage</a>
+              </div>
+            </form>
+
+            <div id="confirmModal" class="modalOverlay" aria-hidden="true" role="dialog" aria-labelledby="confirmTitle">
+              <div class="modal">
+                <div class="modalHeader">
+                  <h3 id="confirmTitle">Confirm your appointment</h3>
+                </div>
+                <div class="modalBody">
+                  <p id="confirmSummary">Please review your appointment details.</p>
+                  <p><strong>Name:</strong> <span id="confirmName"></span></p>
+                  <p><strong>Contact:</strong> <span id="confirmContact"></span></p>
+                  <p><strong>Vehicle VIN:</strong> <span id="confirmVin"></span></p>
+                  <p><strong>Symptoms:</strong> <span id="confirmSymptoms"></span></p>
+                  <p><strong>Appointment:</strong> <span id="confirmDateTime"></span></p>
+                </div>
+                <div class="modalActions">
+                  <button id="cancelSubmit" type="button" class="btn btn--ghost btn--md">Cancel</button>
+                  <button id="confirmSubmit" type="button" class="btn btn--accent btn--md">Confirm and submit</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="card calendar" aria-label="4-week availability calendar">
+            <div class="calendarHeader">
+              <div>
+                <p class="sectionSub" style="margin:0;">Jonathan's availability for the next 4 weeks</p>
+                <strong style="font-size: 16px;">Pick your preferred date</strong>
+              </div>
+              <span style="font-size: 12px; color:#ddd">Mon–Sat available</span>
+            </div>
+            <div id="calendarGrid"></div>
+            <div id="availabilityPanel" class="hidden">
+              <p style="margin-top:10px; margin-bottom:6px; font-size:13px; color:#ddd;">Choose a time slot (15-minute intervals) for your selected day:</p>
+              <div id="timesGrid" class="timesGrid"></div>
+            </div>
+            <p style="font-size: 13px; color:#ddd; margin-top: 10px;">Available Mon–Sat 8:00 AM–6:00 PM.</p>
+            <p style="font-size: 13px; color:#ddd; margin-top: 4px;">Click “See availability” on each day to choose an open time slot.</p>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="brand brand--footer" aria-label="Motor Mind Auto">
+            <a class="brand" href="../index.html" aria-label="Motor Mind Auto Home">
+              <img src="../assets/icons/MotorMindLogoWEB.png" alt="Motor Mind Auto logo">
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h3 class="footer__title">Explore</h3>
+            <a class="footer__link" href="../index.html#services">Services</a>
+            <a class="footer__link" href="../index.html#reviews">Reviews</a>
+            <a class="footer__link" href="../index.html#about">About</a>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__title">Contact</h3>
+            <a class="footer__link" href="tel:+120899483324">Call (208) 994-8332</a>
+            <a class="footer__link" href="sms:+120899483324">Text me</a>
+            <span class="footer__muted">Mon–Sat • 8am–6pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottomInner">
+          <span>© <span data-year></span> Motor Mind Auto. All rights reserved.</span>
+          <a class="footer__link" href="#top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+    <script>
+      const calendarGrid = document.getElementById('calendarGrid');
+      const selectedDateInput = document.getElementById('selectedDate');
+      const selectedTimeInput = document.getElementById('selectedTime');
+      const selectedTimeDisplay = document.getElementById('selectedTimeDisplay');
+      const bookingForm = document.getElementById('bookingForm');
+      const errorMessage = document.getElementById('error-message');
+      const availabilityPanel = document.getElementById('availabilityPanel');
+      const timesGrid = document.getElementById('timesGrid');
+      const submitButton = document.getElementById('submitButton');
+      const confirmModal = document.getElementById('confirmModal');
+      const cancelSubmit = document.getElementById('cancelSubmit');
+      const confirmSubmit = document.getElementById('confirmSubmit');
+      const confirmName = document.getElementById('confirmName');
+      const confirmContact = document.getElementById('confirmContact');
+      const confirmVin = document.getElementById('confirmVin');
+      const confirmSymptoms = document.getElementById('confirmSymptoms');
+      const confirmDateTime = document.getElementById('confirmDateTime');
+
+      const requiredFields = ['firstName', 'lastName', 'contact'];
+
+      function getNext4Weeks() {
+        const weeks = [];
+        const today = new Date();
+        const start = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        for (let i = 0; i < 28; i++) {
+          const d = new Date(start);
+          d.setDate(start.getDate() + i);
+          weeks.push(d);
+        }
+        return weeks;
+      }
+
+      function formatShortDate(date) {
+        return date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+      }
+
+      function formatIso(date) {
+        return date.toISOString().slice(0, 10);
+      }
+
+      function formatTimeToAmPm(slot) {
+        const [h, m] = slot.split(':').map(Number);
+        const suffix = h >= 12 ? 'PM' : 'AM';
+        const hour = h % 12 === 0 ? 12 : h % 12;
+        return `${hour}:${String(m).padStart(2, '0')} ${suffix}`;
+      }
+
+      function getTimeSlots() {
+        const slots = [];
+        const start = 8 * 60;
+        const end = 18 * 60;
+        for (let m = start; m < end; m += 15) {
+          const h = Math.floor(m / 60);
+          const min = m % 60;
+          slots.push(`${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`);
+        }
+        return slots;
+      }
+
+      function randomBlockedForDate(dateIso) {
+        const seed = [...dateIso].reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+        const rng = () => {
+          const x = Math.sin(seed + Math.random() * 10000) * 10000;
+          return x - Math.floor(x);
+        };
+
+        const times = getTimeSlots();
+        const blocked = new Set();
+        for (let t = 0; t < 4; t++) {
+          if (Math.random() > 0.38) {
+            blocked.add(times[Math.floor(Math.random() * times.length)]);
+          }
+        }
+        if (dateIso.endsWith('01') || dateIso.endsWith('07')) {
+          blocked.add('09:30');
+          blocked.add('13:15');
+        }
+        return blocked;
+      }
+
+      const blockedMap = new Map();
+      function getBlockedTimes(dateIso) {
+        if (!blockedMap.has(dateIso)) {
+          blockedMap.set(dateIso, randomBlockedForDate(dateIso));
+        }
+        return blockedMap.get(dateIso);
+      }
+
+      let selectedDateIso = '';
+
+      function updateFormState() {
+        const valid = requiredFields.every((id) => document.getElementById(id).value.trim()) && selectedDateIso && selectedTimeInput.value;
+        submitButton.disabled = !valid;
+      }
+
+      function renderTimesForDate(dateIso) {
+        timesGrid.innerHTML = '';
+        const slots = getTimeSlots();
+        const blocked = getBlockedTimes(dateIso);
+        slots.forEach((slot) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'timeSlot';
+          b.textContent = slot;
+          const display = formatTimeToAmPm(slot);
+          if (blocked.has(slot)) {
+            b.classList.add('unavailable');
+            b.textContent = `${display} × Booked`;
+          } else {
+            b.textContent = display;
+            b.addEventListener('click', () => {
+              selectedTimeInput.value = slot;
+              selectedTimeDisplay.value = display;
+              document.querySelectorAll('.timeSlot.selected').forEach((x) => x.classList.remove('selected'));
+              b.classList.add('selected');
+              updateFormState();
+            });
+          }
+          timesGrid.appendChild(b);
+        });
+      }
+
+      function renderCalendar() {
+        const days = getNext4Weeks();
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const headerRow = document.createElement('div');
+        headerRow.className = 'weekGrid';
+        dayNames.forEach((name) => {
+          const label = document.createElement('div');
+          label.className = 'dayTitle';
+          label.textContent = name;
+          headerRow.appendChild(label);
+        });
+        calendarGrid.appendChild(headerRow);
+
+        let week = document.createElement('div');
+        week.className = 'weekGrid';
+        const startGap = days[0].getDay();
+        for (let i = 0; i < startGap; i++) {
+          week.appendChild(document.createElement('div'));
+        }
+
+        days.forEach((date, index) => {
+          const dayEl = document.createElement('div');
+          dayEl.className = 'day';
+          const monthName = date.toLocaleDateString(undefined, { month: 'short' });
+          const dayNum = date.getDate();
+
+          const dayOfWeek = document.createElement('div');
+          dayOfWeek.style.fontSize = '10px';
+          dayOfWeek.style.opacity = '0.9';
+          dayOfWeek.textContent = date.toLocaleDateString(undefined, { weekday: 'short' });
+
+          const dateLabel = document.createElement('div');
+          dateLabel.style.fontSize = '11px';
+          dateLabel.textContent = `${monthName} ${dayNum}`;
+
+          dayEl.appendChild(dayOfWeek);
+          dayEl.appendChild(dateLabel);
+
+          if (date.getDay() === 0) {
+            const unavailable = document.createElement('div');
+            unavailable.style.color = '#ffb5b5';
+            unavailable.textContent = 'Closed';
+            dayEl.classList.add('day-unavailable');
+            dayEl.appendChild(unavailable);
+          } else {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = 'See availability';
+            btn.setAttribute('data-date', formatIso(date));
+            btn.addEventListener('click', () => {
+              selectedDateIso = formatIso(date);
+              selectedDateInput.value = formatShortDate(date);
+              selectedTimeInput.value = '';
+              selectedTimeDisplay.value = '';
+              document.querySelectorAll('.day button.is-selected').forEach((b) => b.classList.remove('is-selected'));
+              btn.classList.add('is-selected');
+              renderTimesForDate(selectedDateIso);
+              availabilityPanel.classList.remove('hidden');
+              updateFormState();
+            });
+            dayEl.appendChild(btn);
+          }
+
+          week.appendChild(dayEl);
+          if (date.getDay() === 6) {
+            calendarGrid.appendChild(week);
+            week = document.createElement('div');
+            week.className = 'weekGrid';
+          }
+        });
+
+        if (week.children.length) {
+          calendarGrid.appendChild(week);
+        }
+      }
+
+      function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+      }
+
+      function hideError() {
+        errorMessage.style.display = 'none';
+      }
+
+      function openConfirmModal() {
+        confirmName.textContent = `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`;
+        confirmContact.textContent = document.getElementById('contact').value.trim();
+        confirmVin.textContent = document.getElementById('vin').value.trim() || 'N/A';
+        confirmSymptoms.textContent = document.getElementById('symptoms').value.trim() || 'N/A';
+        confirmDateTime.textContent = `${selectedDateInput.value} @ ${selectedTimeDisplay.value}`;
+        confirmModal.style.display = 'flex';
+        confirmModal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeConfirmModal() {
+        confirmModal.style.display = 'none';
+        confirmModal.setAttribute('aria-hidden', 'true');
+      }
+
+      renderCalendar();
+      updateFormState();
+
+      [...requiredFields, 'vin', 'symptoms'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('input', () => {
+          hideError();
+          updateFormState();
+        });
+      });
+
+      bookingForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const contact = document.getElementById('contact').value.trim();
+        const selectedTime = selectedTimeInput.value.trim();
+
+        if (!firstName || !lastName) {
+          showError('First and last name are required.');
+          return;
+        }
+        if (!contact) {
+          showError('Please provide at least a phone or email.');
+          return;
+        }
+        if (!selectedDateIso) {
+          showError('Please select a date from calendar.');
+          return;
+        }
+        if (!selectedTime) {
+          showError('Please select an available time slot.');
+          return;
+        }
+
+        hideError();
+        openConfirmModal();
+      });
+
+      cancelSubmit.addEventListener('click', closeConfirmModal);
+      confirmSubmit.addEventListener('click', () => {
+        closeConfirmModal();
+        window.location.href = 'info.html';
+      });
+    </script>
+  </body>
+</html>
