@@ -539,6 +539,9 @@ strong {
 .quote {
   min-width: 100%;
   padding: 22px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .quote__stars {
