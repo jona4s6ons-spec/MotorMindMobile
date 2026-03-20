@@ -704,10 +704,8 @@ strong {
 
 /* Cards */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
-  align-items: start;
+  column-count: 3;
+  column-gap: 14px;
 }
 
 .card {
@@ -720,6 +718,8 @@ strong {
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
   transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+  margin-bottom: 14px;
+  break-inside: avoid;
 }
 
 .card:hover {
@@ -1185,7 +1185,7 @@ strong {
   }
 
   .cards {
-    grid-template-columns: repeat(2, 1fr);
+    column-count: 2;
   }
 
   .steps {
@@ -1262,7 +1262,7 @@ strong {
   }
 
   .cards {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 
   .sectionHead--split {
