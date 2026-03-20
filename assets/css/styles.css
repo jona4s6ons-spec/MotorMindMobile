@@ -339,6 +339,12 @@ strong {
   font-size: 15px;
 }
 
+.btn--xl {
+  padding: 18px 24px;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
 .btn--primary {
   background: rgba(255, 255, 255, 0.10);
   border-color: rgba(255, 255, 255, 0.18);
