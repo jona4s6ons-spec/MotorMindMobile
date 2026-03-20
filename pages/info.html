@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Information about Motor Mind Auto frontend site."
+    />
+    <title>Info | Motor Mind Auto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Rubik:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header" data-header>
+      <div class="container header__inner">
+        <a class="brand" href="../index.html" aria-label="Motor Mind Auto Home">
+          <img src="../assets/icons/MotorMindLogoWEB.png" alt="Motor Mind Auto logo">
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <button class="nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="navMenu">
+            <span class="nav__toggleBars" aria-hidden="true"></span>
+            <span class="sr-only">Open menu</span>
+          </button>
+
+          <div class="nav__menu" id="navMenu" data-menu>
+            <a class="nav__link" href="../index.html#services" data-nav-link>Services</a>
+            <a class="nav__link" href="../index.html#reviews" data-nav-link>Reviews</a>
+            <a class="nav__link" href="../index.html#about" data-nav-link>About</a>
+            <a class="nav__link" href="../index.html#pricing" data-nav-link>Pricing</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="container">
+        <div class="sectionHead">
+          <h1 class="sectionTitle">Thank you for using our frontend site!</h1>
+          <p class="sectionSub">No request has been sent. The site will function properly once it can be hosted on AWS.</p>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+          <a class="btn btn--ghost btn--lg" href="../index.html">Back to home</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <div class="brand brand--footer" aria-label="Motor Mind Auto">
+            <a class="brand" href="../index.html" aria-label="Motor Mind Auto Home">
+              <img src="../assets/icons/MotorMindLogoWEB.png" alt="Motor Mind Auto logo">
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h3 class="footer__title">Explore</h3>
+            <a class="footer__link" href="../index.html#services">Services</a>
+            <a class="footer__link" href="../index.html#reviews">Reviews</a>
+            <a class="footer__link" href="../index.html#about">About</a>
+          </div>
+          <div class="footer__col">
+            <h3 class="footer__title">Contact</h3>
+            <a class="footer__link" href="tel:+120899483324">Call (208) 994-8332</a>
+            <a class="footer__link" href="sms:+120899483324">Text me</a>
+            <span class="footer__muted">Mon–Sat • 8am–6pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottomInner">
+          <span>© <span data-year></span> Motor Mind Auto. All rights reserved.</span>
+          <a class="footer__link" href="#top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>
