@@ -46,11 +46,9 @@
       .calendar { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); border-radius: 12px; padding: 12px; }
       .calendarHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
       .weekGrid { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap: 6px; margin-bottom: 8px; }
-      .day { border-radius: 8px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); min-height: 74px; padding: 6px; font-size: 12px; display: grid; gap: 4px; }
-      .day { display: flex; flex-direction: column; gap: 6px; }
-      .day button { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; border: none; border-radius: 6px; background: rgba(50,74,95,.7); color: #fff; font-weight: 700; cursor: pointer; padding: 6px 8px; font-size: 11px; white-space: normal; text-align: center; line-height: 1.2; }
-      .day button:hover { background: rgba(50,74,95,.9); }
-      .day button.is-selected { background: #2ee59d; color: #06241e; }
+      .day { border-radius: 8px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); min-height: 74px; padding: 6px; font-size: 12px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; }
+      .day:hover { background: rgba(255,255,255,.08); }
+      .day.selected { background: #2ee59d; color: #06241e; }
       .day.day-unavailable { opacity: .4; pointer-events: none; }
       .dayTitle { font-size: 10px; text-transform: uppercase; color: #ddd; letter-spacing: .03em; }
       .timesGrid { margin-top: 10px; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 6px; }
@@ -328,8 +326,20 @@
       function renderTimesForDate(dateIso) {
         timesGrid.innerHTML = '';
         const slots = getTimeSlots();
+        const todayIso = formatIso(new Date());
+        let availableSlots = slots;
+        if (dateIso === todayIso) {
+          const now = new Date();
+          const currentMinutes = now.getHours() * 60 + now.getMinutes();
+          const minMinutes = currentMinutes + 30;
+          availableSlots = slots.filter(slot => {
+            const [h, m] = slot.split(':').map(Number);
+            const slotMinutes = h * 60 + m;
+            return slotMinutes >= minMinutes;
+          });
+        }
         const blocked = getBlockedTimes(dateIso);
-        slots.forEach((slot) => {
+        availableSlots.forEach((slot) => {
           const b = document.createElement('button');
           b.type = 'button';
           b.className = 'timeSlot';
@@ -397,22 +407,18 @@
             dayEl.classList.add('day-unavailable');
             dayEl.appendChild(unavailable);
           } else {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.textContent = 'See availability';
-            btn.setAttribute('data-date', formatIso(date));
-            btn.addEventListener('click', () => {
+            dayEl.setAttribute('data-date', formatIso(date));
+            dayEl.addEventListener('click', () => {
               selectedDateIso = formatIso(date);
               selectedDateInput.value = formatShortDate(date);
               selectedTimeInput.value = '';
               selectedTimeDisplay.value = '';
-              document.querySelectorAll('.day button.is-selected').forEach((b) => b.classList.remove('is-selected'));
-              btn.classList.add('is-selected');
+              document.querySelectorAll('.day.selected').forEach((d) => d.classList.remove('selected'));
+              dayEl.classList.add('selected');
               renderTimesForDate(selectedDateIso);
               availabilityPanel.classList.remove('hidden');
               updateFormState();
             });
-            dayEl.appendChild(btn);
           }
 
           week.appendChild(dayEl);
