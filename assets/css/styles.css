@@ -341,7 +341,6 @@ strong {
 .section--alt {
   background: radial-gradient(900px 600px at 20% 0%, rgba(50, 74, 95, 0.1), transparent 55%),
     rgba(255, 255, 255, 0.02);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -715,7 +714,6 @@ strong {
   background: radial-gradient(900px 700px at 20% 40%, rgba(50, 74, 95, 0.18), transparent 60%),
     radial-gradient(900px 700px at 80% 60%, rgba(27, 42, 65, 0.16), transparent 60%),
     rgba(255, 255, 255, 0.02);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .cta {
@@ -728,9 +726,6 @@ strong {
 .cta__content {
   padding: 22px;
   border-radius: var(--radius-xl);
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: var(--shadow-2);
 }
 
 .cta__title {
@@ -738,8 +733,6 @@ strong {
   font-size: 28px;
   letter-spacing: -0.03em;
 }
-
-
 
 .cta__actions {
   display: flex;
@@ -750,8 +743,6 @@ strong {
 .cta__panel {
   padding: 18px;
   border-radius: var(--radius-xl);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .ctaRow {
@@ -759,7 +750,6 @@ strong {
   justify-content: space-between;
   gap: 12px;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .ctaRow:last-child {
