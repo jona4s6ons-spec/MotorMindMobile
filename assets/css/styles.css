@@ -227,6 +227,7 @@ strong {
   cursor: pointer;
   transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
   user-select: none;
+  white-space: nowrap;
 }
 
 .btn:active {
@@ -271,6 +272,20 @@ strong {
 /* Make all service card Schedule now buttons bigger */
 .cards .card a.btn--accent,
 .pricingCard .btn--accent {
+  padding: 10px 13px;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+/* Make service card Call/Text buttons the same size */
+.cards .card a.btn--ghost {
+  padding: 10px 13px;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+/* Make about section buttons the same size as service card buttons */
+.about__actions .btn {
   padding: 10px 13px;
   border-radius: 20px;
   font-size: 16px;
@@ -618,8 +633,10 @@ strong {
 
 .about__actions {
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-top: 16px;
 }
 
@@ -822,6 +839,150 @@ strong {
   gap: 12px;
 }
 
+/* About Section */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+  margin-bottom: 26px;
+}
+
+.about__image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.about__text {
+  padding: 14px 0;
+}
+
+.about__text h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.about__text h3 {
+  margin: 16px 0 12px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.about__text p {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 70ch;
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+.qualifications {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.qual-card {
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.qual-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.qual-card h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.qual-card ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.qual-card li {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.qual-card li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  max-width: 600px;
+}
+
+.contact-card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.contact-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.contact-card a {
+  display: block;
+  color: rgba(204, 201, 220, 0.8);
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 140ms ease;
+}
+
+.contact-card a:hover {
+  color: var(--text);
+}
+
+.contact-meta {
+  margin: 8px 0 0;
+  color: var(--faint);
+  font-size: 13px;
+}
+
 /* Responsive */
 @media (max-width: 980px) {
   .hero__inner {
@@ -834,16 +995,20 @@ strong {
     column-count: 2;
   }
 
-
-
-
-
-  .about {
+  .about__content {
     grid-template-columns: 1fr;
   }
 
-  .about__img {
-    height: 420px;
+  .about__image {
+    max-width: 100%;
+  }
+
+  .qualifications {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
   }
 
   .pricingGrid {
